@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { ChevronLeft, ChevronRight, Users, Clock, Target, LineChart, Building, Rocket } from 'lucide-react';
+// Obtenemos los componentes de Lucide desde la versión CDN
+const { Users, Clock, Target, LineChart, Building, Rocket, ChevronLeft, ChevronRight } = window.lucide;
 
 const PitchDeck = () => {
-    const [currentSlide, setCurrentSlide] = useState(0);
+    const [currentSlide, setCurrentSlide] = React.useState(0);
 
     const slides = [
         // Slide 1: Portada
@@ -20,19 +20,19 @@ const PitchDeck = () => {
                 "Experiencia del candidato deficiente",
                 "Recursos limitados en RRHH"
             ],
-            icon: <Users className="w-16 h-16 text-blue-600" />,
+            icon: Users({ className: "w-16 h-16 text-blue-600" }),
             type: "content"
         },
         // Slide 3: Nuestra Solución
         {
-            title: "La Solución:LandBot + WeFindYourNewJob",
+            title: "La Solución: LandBot + WeFindYourNewJob",
             points: [
                 "Bots de Landbot personalizados para recruiting",
                 "Integración con Facebook Ads & Google Ads",
                 "Entrevistas preliminares automatizadas",
                 "Proceso de postulación ágil y amigable"
             ],
-            icon: <Rocket className="w-16 h-16 text-green-600" />,
+            icon: Rocket({ className: "w-16 h-16 text-green-600" }),
             type: "content"
         },
         // Slide 4: Beneficios
@@ -44,7 +44,7 @@ const PitchDeck = () => {
                 "Mejora del 85% en experiencia del candidato",
                 "Reducción del 75% en costos de reclutamiento"
             ],
-            icon: <LineChart className="w-16 h-16 text-purple-600" />,
+            icon: LineChart({ className: "w-16 h-16 text-purple-600" }),
             type: "content"
         },
         // Slide 5: Mercado Objetivo
@@ -56,7 +56,7 @@ const PitchDeck = () => {
                 "Foco en empresas pequeñas, medianas y grandes",
                 "Sectores: Tecnología, Retail, Manufactura, Logística, Gastronomía, Agencias de empleo, etc."
             ],
-            icon: <Target className="w-16 h-16 text-red-600" />,
+            icon: Target({ className: "w-16 h-16 text-red-600" }),
             type: "content"
         },
         // Slide 6: Plan de Implementación
@@ -69,7 +69,7 @@ const PitchDeck = () => {
                 "Fase 3: Guía de implementación paso a paso",
                 "Soporte continuo y optimización"
             ],
-            icon: <Building className="w-16 h-16 text-orange-600" />,
+            icon: Building({ className: "w-16 h-16 text-orange-600" }),
             type: "content"
         },
         // Slide 7: Beneficios para Landbot
@@ -81,10 +81,10 @@ const PitchDeck = () => {
                 "Volumen: Miles de bots activos para recruiting",
                 "Caso de éxito: Modelo replicable en otros países"
             ],
-            icon: <LineChart className="w-16 h-16 text-green-600" />,
+            icon: LineChart({ className: "w-16 h-16 text-green-600" }),
             type: "content"
         },
-        // Slid 8: Próximos Pasos
+        // Slide 8: Próximos Pasos
         {
             title: "Próximos Pasos",
             subtitle: "¿Listos para revolucionar el recruiting juntos?",
@@ -150,7 +150,7 @@ const PitchDeck = () => {
                         className="p-2 rounded-full bg-blue-100 hover:bg-blue-200 transition-colors"
                         disabled={currentSlide === 0}
                     >
-                        <ChevronLeft className="w-6 h-6 text-blue-600" />
+                        {ChevronLeft({ className: "w-6 h-6 text-blue-600" })}
                     </button>
                     <span className="text-gray-600">
                         {currentSlide + 1} / {slides.length}
@@ -160,7 +160,7 @@ const PitchDeck = () => {
                         className="p-2 rounded-full bg-blue-100 hover:bg-blue-200 transition-colors"
                         disabled={currentSlide === slides.length - 1}
                     >
-                        <ChevronRight className="w-6 h-6 text-blue-600" />
+                        {ChevronRight({ className: "w-6 h-6 text-blue-600" })}
                     </button>
                 </div>
             </div>
@@ -168,4 +168,5 @@ const PitchDeck = () => {
     );
 };
 
-export default PitchDeck;
+// Necesitamos cambiar la forma de exportar para que funcione con el script tag
+window.PitchDeck = PitchDeck;
