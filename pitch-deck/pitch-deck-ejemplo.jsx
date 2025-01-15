@@ -1,6 +1,8 @@
-// Obtenemos los componentes de Lucide desde la versión CDN
-const { Users, Clock, Target, LineChart, Building, Rocket, ChevronLeft, ChevronRight } = window.lucide;
+const React = window.React;
+const { useState } = React;
 
+// Obtenemos los iconos de Lucide
+const { Users, Clock, Target, LineChart, Building, Rocket, ChevronLeft, ChevronRight } = window.lucide;
 const PitchDeck = () => {
     const [currentSlide, setCurrentSlide] = React.useState(0);
 

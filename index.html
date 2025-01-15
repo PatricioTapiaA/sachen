@@ -9,8 +9,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     
     <!-- React -->
-    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
     
     <!-- Babel -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -30,39 +30,19 @@
     <div id="root"></div>
     
     <!-- Script del PitchDeck -->
+    <script type="text/babel" src="pitch-deck/pitch-deck-ejemplo.jsx"></script>
+    
+    <!-- Script para renderizar -->
     <script type="text/babel">
-        // Obtenemos los iconos de Lucide
-        const { Users, Clock, Target, LineChart, Building, Rocket, ChevronLeft, ChevronRight } = lucide;
-
-        const PitchDeck = () => {
-            const [currentSlide, setCurrentSlide] = React.useState(0);
-
-            const slides = [
-                // Slide 1: Portada
-                {
-                    title: "Revolucionando el Recruiting Digital",
-                    subtitle: "Una propuesta de colaboración con Landbot",
-                    type: "cover"
-                },
-                // ... (resto de tus slides)
-            ];
-
-            // ... (resto de tu código del PitchDeck)
-
-            return (
-                <div className="w-full h-screen bg-gray-50 flex flex-col items-center justify-center p-8">
-                    <h1>Tu PitchDeck aquí</h1>
-                </div>
+        // Esperamos a que el DOM esté listo
+        document.addEventListener('DOMContentLoaded', () => {
+            const root = ReactDOM.createRoot(document.getElementById('root'));
+            root.render(
+                <React.StrictMode>
+                    <PitchDeck />
+                </React.StrictMode>
             );
-        };
-
-        // Renderizamos el componente
-        const root = ReactDOM.createRoot(document.getElementById('root'));
-        root.render(
-            <React.StrictMode>
-                <PitchDeck />
-            </React.StrictMode>
-        );
+        });
     </script>
 </body>
 </html>
