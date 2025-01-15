@@ -1,12 +1,13 @@
-import { useState } from 'react'
-import PitchDeck from '../pitch-deck/pitch-deck'
+import React from 'react';
+import MainLayout from './layouts/MainLayout';
+import PitchDeck from './components/PitchDeck/PitchDeck';
 
 function App() {
   return (
-    <div className="App">
+    <MainLayout>
       <PitchDeck />
-    </div>
-  )
+    </MainLayout>
+  );
 }
 
-export default App
+export default App;
