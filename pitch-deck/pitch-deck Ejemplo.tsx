@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { ChevronLeft, ChevronRight, Users, Clock, Target, LineChart, Building, Rocket } from 'lucide-react';
 
 const PitchDeck = () => {
-    const [currentSlide, React.useState(0)];
+    const [currentSlide, setCurrentSlide] = useState(0);
+
     const slides = [
         // Slide 1: Portada
         {
