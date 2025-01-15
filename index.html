@@ -3,18 +3,182 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pitch Deck Preview</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.5/babel.min.js"></script>
+    <title>Pitch Deck - Recruiting Digital</title>
+    <!-- React -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <!-- Babel -->
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/umd/lucide.min.js"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
     <div id="root"></div>
-    <script type="text/babel" src="pitch-deck Ejemplo.tsx"></script>
     <script type="text/babel">
-        ReactDOM.render(<PitchDeck />, document.getElementById('root'));
+        const { ChevronLeft, ChevronRight, Users, Clock, Target, LineChart, Building, Rocket } = lucide;
+
+        const PitchDeck = () => {
+            const [currentSlide, React.useState(0)];
+
+            const slides = [
+                {
+                    title: "Revolucionando el Recruiting Digital",
+                    subtitle: "Una propuesta de colaboración con Landbot",
+                    type: "cover"
+                },
+                {
+                    title: "El Desafío Actual",
+                    points: [
+                        "Procesos de recruiting lentos y costosos",
+                        "Alta tasa de abandono en aplicaciones",
+                        "Experiencia del candidato deficiente",
+                        "Recursos limitados en RRHH"
+                    ],
+                    icon: <Users className="w-16 h-16 text-blue-600" />,
+                    type: "content"
+                },
+                {
+                    title: "La Solución: LandBot + WeFindYourNewJob",
+                    points: [
+                        "Bots de Landbot personalizados para recruiting",
+                        "Integración con Facebook Ads & Google Ads",
+                        "Entrevistas preliminares automatizadas",
+                        "Proceso de postulación ágil y amigable"
+                    ],
+                    icon: <Rocket className="w-16 h-16 text-green-600" />,
+                    type: "content"
+                },
+                {
+                    title: "Beneficios Clave",
+                    points: [
+                        "Reducción del 90% en tiempo de contratación",
+                        "Incremento del 80% en candidatos cualificados",
+                        "Mejora del 85% en experiencia del candidato",
+                        "Reducción del 75% en costos de reclutamiento"
+                    ],
+                    icon: <LineChart className="w-16 h-16 text-purple-600" />,
+                    type: "content"
+                },
+                {
+                    title: "Mercado Objetivo",
+                    points: [
+                        "España: 3.4M empresas activas",
+                        "Alemania: 3.8M empresas activas",
+                        "Foco en empresas pequeñas, medianas y grandes",
+                        "Sectores: Tecnología, Retail, Manufactura, Logística, Gastronomía, Agencias de empleo, etc."
+                    ],
+                    icon: <Target className="w-16 h-16 text-red-600" />,
+                    type: "content"
+                },
+                {
+                    title: "Plan de Implementación",
+                    points: [
+                        "Fase 1: Setup inicial: 24-48 horas",
+                        "Fase 2: Package completo: Chatbot + Templates de anuncios",
+                        "Fase 2.2: Portal Personalizado o Implementación en el Portal de la empresa",
+                        "Fase 3: Guía de implementación paso a paso",
+                        "Soporte continuo y optimización"
+                    ],
+                    icon: <Building className="w-16 h-16 text-orange-600" />,
+                    type: "content"
+                },
+                {
+                    title: "Beneficios para Landbot",
+                    points: [
+                        "Ingresos recurrentes: Cada cliente = suscripción mensual garantizada",
+                        "Expansión de mercado: Entrada directa al sector RRHH en España y Alemania",
+                        "Volumen: Miles de bots activos para recruiting",
+                        "Caso de éxito: Modelo replicable en otros países"
+                    ],
+                    icon: <LineChart className="w-16 h-16 text-green-600" />,
+                    type: "content"
+                },
+                {
+                    title: "Próximos Pasos",
+                    subtitle: "¿Listos para revolucionar el recruiting juntos?",
+                    type: "cta"
+                }
+            ];
+
+            const nextSlide = () => {
+                setCurrentSlide((prev) => (prev + 1) % slides.length);
+            };
+
+            const prevSlide = () => {
+                setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+            };
+
+            const renderSlide = (slide) => {
+                switch (slide.type) {
+                    case "cover":
+                        return (
+                            <div className="flex flex-col items-center justify-center h-full text-center">
+                                <h1 className="text-4xl font-bold text-blue-600 mb-4">{slide.title}</h1>
+                                <p className="text-xl text-gray-600">{slide.subtitle}</p>
+                            </div>
+                        );
+                    case "content":
+                        return (
+                            <div className="flex flex-col items-center h-full">
+                                <div className="mb-8">{slide.icon}</div>
+                                <h2 className="text-3xl font-bold text-gray-800 mb-8">{slide.title}</h2>
+                                <ul className="space-y-4">
+                                    {slide.points.map((point, index) => (
+                                        <li key={index} className="flex items-center text-lg text-gray-700">
+                                            <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
+                                            {point}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        );
+                    case "cta":
+                        return (
+                            <div className="flex flex-col items-center justify-center h-full text-center">
+                                <h2 className="text-3xl font-bold text-blue-600 mb-4">{slide.title}</h2>
+                                <p className="text-xl text-gray-600">{slide.subtitle}</p>
+                            </div>
+                        );
+                    default:
+                        return null;
+                }
+            };
+
+            return (
+                <div className="w-full h-screen bg-gray-50 flex flex-col items-center justify-center p-8">
+                    <div className="w-full max-w-4xl bg-white rounded-xl shadow-lg p-12 relative">
+                        <div className="h-96">
+                            {renderSlide(slides[currentSlide])}
+                        </div>
+                        <div className="absolute bottom-4 left-0 right-0 flex justify-center items-center gap-4">
+                            <button
+                                onClick={prevSlide}
+                                className="p-2 rounded-full bg-blue-100 hover:bg-blue-200 transition-colors"
+                                disabled={currentSlide === 0}
+                            >
+                                <ChevronLeft className="w-6 h-6 text-blue-600" />
+                            </button>
+                            <span className="text-gray-600">
+                                {currentSlide + 1} / {slides.length}
+                            </span>
+                            <button
+                                onClick={nextSlide}
+                                className="p-2 rounded-full bg-blue-100 hover:bg-blue-200 transition-colors"
+                                disabled={currentSlide === slides.length - 1}
+                            >
+                                <ChevronRight className="w-6 h-6 text-blue-600" />
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+
+        // Renderizar el componente
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<PitchDeck />);
     </script>
 </body>
 </html>
