@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Users, Clock, Target, LineChart, Building, Rocket, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Users, Clock, Target, LineChart, Building, Rocket } from 'lucide-react';
 
 const PitchDeck = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -11,33 +11,84 @@ const PitchDeck = () => {
             subtitle: "Una propuesta de colaboración con Landbot",
             type: "cover"
         },
-        // Slide 2: Problema
+        // Slide 2: El Problema
         {
-            type: "content",
-            title: "El Problema",
-            icon: <Users className="w-12 h-12 text-blue-600" />,
+            title: "El Desafío Actual",
             points: [
-                "Procesos de reclutamiento lentos y costosos",
+                "Procesos de recruiting lentos y costosos",
                 "Alta tasa de abandono en aplicaciones",
-                "Experiencia del candidato poco atractiva"
-            ]
+                "Experiencia del candidato deficiente",
+                "Recursos limitados en RRHH"
+            ],
+            icon: <Users className="w-16 h-16 text-blue-600" />,
+            type: "content"
         },
-        // Slide 3: Solución
+        // Slide 3: Nuestra Solución
         {
-            type: "content",
-            title: "Nuestra Solución",
-            icon: <Rocket className="w-12 h-12 text-blue-600" />,
+            title: "La Solución:LandBot + WeFindYourNewJob",
             points: [
-                "Chatbots inteligentes para preselección",
-                "Automatización de tareas repetitivas",
-                "Experiencia personalizada 24/7"
-            ]
+                "Bots de Landbot personalizados para recruiting",
+                "Integración con Facebook Ads & Google Ads",
+                "Entrevistas preliminares automatizadas",
+                "Proceso de postulación ágil y amigable"
+            ],
+            icon: <Rocket className="w-16 h-16 text-green-600" />,
+            type: "content"
         },
-        // Slide 4: Call to Action
+        // Slide 4: Beneficios
         {
-            type: "cta",
-            title: "¡Comencemos Juntos!",
-            subtitle: "Transformemos el futuro del recruiting"
+            title: "Beneficios Clave",
+            points: [
+                "Reducción del 90% en tiempo de contratación",
+                "Incremento del 80% en candidatos cualificados",
+                "Mejora del 85% en experiencia del candidato",
+                "Reducción del 75% en costos de reclutamiento"
+            ],
+            icon: <LineChart className="w-16 h-16 text-purple-600" />,
+            type: "content"
+        },
+        // Slide 5: Mercado Objetivo
+        {
+            title: "Mercado Objetivo",
+            points: [
+                "España: 3.4M empresas activas",
+                "Alemania: 3.8M empresas activas",
+                "Foco en empresas pequeñas, medianas y grandes",
+                "Sectores: Tecnología, Retail, Manufactura, Logística, Gastronomía, Agencias de empleo, etc."
+            ],
+            icon: <Target className="w-16 h-16 text-red-600" />,
+            type: "content"
+        },
+        // Slide 6: Plan de Implementación
+        {
+            title: "Plan de Implementación",
+            points: [
+                "Fase 1: Setup inicial: 24-48 horas",
+                "Fase 2: Package completo: Chatbot + Templates de anuncios",
+                "Fase 2.2: Portal Personalizado o Implementación en el Portal de la empresa",
+                "Fase 3: Guía de implementación paso a paso",
+                "Soporte continuo y optimización"
+            ],
+            icon: <Building className="w-16 h-16 text-orange-600" />,
+            type: "content"
+        },
+        // Slide 7: Beneficios para Landbot
+        {
+            title: "Beneficios para Landbot",
+            points: [
+                "Ingresos recurrentes: Cada cliente = suscripción mensual garantizada",
+                "Expansión de mercado: Entrada directa al sector RRHH en España y Alemania",
+                "Volumen: Miles de bots activos para recruiting",
+                "Caso de éxito: Modelo replicable en otros países"
+            ],
+            icon: <LineChart className="w-16 h-16 text-green-600" />,
+            type: "content"
+        },
+        // Slid 8: Próximos Pasos
+        {
+            title: "Próximos Pasos",
+            subtitle: "¿Listos para revolucionar el recruiting juntos?",
+            type: "cta"
         }
     ];
 
@@ -92,6 +143,7 @@ const PitchDeck = () => {
                     {renderSlide(slides[currentSlide])}
                 </div>
 
+                {/* Navigation */}
                 <div className="absolute bottom-4 left-0 right-0 flex justify-center items-center gap-4">
                     <button
                         onClick={prevSlide}
