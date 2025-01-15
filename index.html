@@ -5,21 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Sitio Web</title>
     
-    <!-- Añadimos Tailwind CSS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.js"></script>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- React y ReactDOM -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+    <!-- React -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     
-    <!-- Babel para JSX -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.22.20/babel.min.js"></script>
+    <!-- Babel -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
     <!-- Lucide Icons -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/umd/lucide.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
 
     <style>
-        /* Aseguramos que el contenedor ocupe toda la pantalla */
         html, body, #root {
             height: 100%;
             margin: 0;
@@ -30,20 +29,40 @@
 <body>
     <div id="root"></div>
     
-    <!-- Importamos el componente PitchDeck -->
-    <script type="text/babel" src="pitch-deck/pitch-deck-ejemplo.tsx"></script>
-    
-    <!-- Script para renderizar el componente -->
+    <!-- Script del PitchDeck -->
     <script type="text/babel">
-        // Esperamos a que el DOM esté listo
-        document.addEventListener('DOMContentLoaded', () => {
-            ReactDOM.render(
-                <React.StrictMode>
-                    <PitchDeck />
-                </React.StrictMode>,
-                document.getElementById('root')
+        // Obtenemos los iconos de Lucide
+        const { Users, Clock, Target, LineChart, Building, Rocket, ChevronLeft, ChevronRight } = lucide;
+
+        const PitchDeck = () => {
+            const [currentSlide, setCurrentSlide] = React.useState(0);
+
+            const slides = [
+                // Slide 1: Portada
+                {
+                    title: "Revolucionando el Recruiting Digital",
+                    subtitle: "Una propuesta de colaboración con Landbot",
+                    type: "cover"
+                },
+                // ... (resto de tus slides)
+            ];
+
+            // ... (resto de tu código del PitchDeck)
+
+            return (
+                <div className="w-full h-screen bg-gray-50 flex flex-col items-center justify-center p-8">
+                    <h1>Tu PitchDeck aquí</h1>
+                </div>
             );
-        });
+        };
+
+        // Renderizamos el componente
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(
+            <React.StrictMode>
+                <PitchDeck />
+            </React.StrictMode>
+        );
     </script>
 </body>
 </html>
